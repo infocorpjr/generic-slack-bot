@@ -14,3 +14,16 @@
 $router->get('/', function () use ($router) {
     return response(view('home'));
 });
+
+$router->group(['namespace' => 'Api', 'prefix' => 'api'], function () use ($router) {
+    // Using The "App\Http\Controllers\Api" Namespace...
+
+    $router->group(['namespace' => 'v1', 'prefix' => 'v1'], function () use ($router) {
+        // Using The "App\Http\Controllers\Api" Namespace...
+
+        // Site da infocorp
+        $router->group(['prefix' => 'infocorp'], function () use ($router) {
+            $router->post('contato', ['uses' => 'SlackbotController@infocorpContato']);
+        });
+    });
+});
