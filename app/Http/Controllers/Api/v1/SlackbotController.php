@@ -25,7 +25,39 @@ class SlackbotController extends Controller
                 {
                     'pretext': 'Olá, Mensagem nova do {$PROJECT}',
                     'color': '#36a64f',
-                    'text': 'Nome: {$NAME}\nMensagem: {$SUBJECT} \nEmail: {$EMAIL}',
+                    'text': 'Nome: {$NAME}\nEmail: {$EMAIL}\nMensagem: {$SUBJECT}',
+                }
+            ]
+        }
+        ";
+
+        // Submit the POST request
+        $result = $this->sendJsonCurl($SLACK_WEBHOOK, $MESSAGE);
+
+        return response()->json($result, 200);
+    }
+
+    public function infocorpMembro(Request $request)
+    {
+        // TODO: Adicionar $SLACK_WEBHOOK para a implementação
+        $SLACK_WEBHOOK = '';
+
+        $PROJECT = 'G - WEBSITE';
+        $NAME = $request->get('name');
+        $EMAIL = $request->get('email');
+        $TELEFONE = $request->get('telefone');
+        $CURSO = $request->get('curso');
+        $DATA_NASC = $request->get('dataNasc');
+        $FACULDADE = $request->get('curso');
+        $CONHECIMENTO = $request->get('conhecimentos');
+
+        $MESSAGE = "
+        {
+            'attachments': [
+                {
+                    'pretext': 'Olá, Mensagem nova do {$PROJECT}',
+                    'color': '#36a64f',
+                    'text': 'Nome: {$NAME}\nEmail: {$EMAIL}\nTelefone: {$TELEFONE}\nNasci em: {$DATA_NASC}\nCurso: {$CURSO}\nTenho conhecimento em: {$CONHECIMENTO}',
                 }
             ]
         }
