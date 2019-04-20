@@ -16,11 +16,8 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['namespace' => 'Api'], function () use ($router) {
-    // Using The "App\Http\Controllers\Api" Namespace...
-
+    // API V1
     $router->group(['namespace' => 'v1', 'prefix' => 'v1'], function () use ($router) {
-        // Using The "App\Http\Controllers\Api\v1" Namespace...
-
         // Site da infocorp
         $router->group(['prefix' => 'infocorp'], function () use ($router) {
             $router->post('contato', ['uses' => 'SlackbotController@infocorpContato']);
