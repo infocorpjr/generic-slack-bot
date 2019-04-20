@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 
 class SlackbotController extends Controller
 {
-    // TODO: Mudar web hook na implementação
+    // TODO: Adicionar $SLACK_WEBHOOK para a implementação
     private $SLACK_WEBHOOK = '';
 
     public function infocorpContato(Request $request)
     {
-        // TODO: Adicionar $SLACK_WEBHOOK para a implementação
         $PROJECT = 'G - WEBSITE';
         $NAME = $request->get('name');
         $EMAIL = $request->get('email');
@@ -38,9 +37,6 @@ class SlackbotController extends Controller
 
     public function infocorpMembro(Request $request)
     {
-        // TODO: Adicionar $SLACK_WEBHOOK para a implementação
-        $SLACK_WEBHOOK = '';
-
         $PROJECT = 'G - WEBSITE';
         $NAME = $request->get('name');
         $EMAIL = $request->get('email');
