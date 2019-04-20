@@ -11,11 +11,11 @@
 |
 */
 
-$router->get('/', function () use ($router) {   
+$router->get('/', function () use ($router) {
     return response(view('home'));
 });
 
-$router->group(['namespace' => 'Api', 'prefix' => 'api'], function () use ($router) {
+$router->group(['namespace' => 'Api'], function () use ($router) {
     // Using The "App\Http\Controllers\Api" Namespace...
 
     $router->group(['namespace' => 'v1', 'prefix' => 'v1'], function () use ($router) {
