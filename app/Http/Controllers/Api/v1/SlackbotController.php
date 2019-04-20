@@ -8,12 +8,11 @@ use Illuminate\Http\Request;
 class SlackbotController extends Controller
 {
     // TODO: Mudar web hook na implementação
+    private $SLACK_WEBHOOK = '';
 
     public function infocorpContato(Request $request)
     {
         // TODO: Adicionar $SLACK_WEBHOOK para a implementação
-        $SLACK_WEBHOOK = '';
-
         $PROJECT = 'G - WEBSITE';
         $NAME = $request->get('name');
         $EMAIL = $request->get('email');
@@ -32,7 +31,7 @@ class SlackbotController extends Controller
         ";
 
         // Submit the POST request
-        $result = $this->sendJsonCurl($SLACK_WEBHOOK, $MESSAGE);
+        $result = $this->sendJsonCurl($this->SLACK_WEBHOOK, $MESSAGE);
 
         return response()->json($result, 200);
     }
@@ -64,7 +63,7 @@ class SlackbotController extends Controller
         ";
 
         // Submit the POST request
-        $result = $this->sendJsonCurl($SLACK_WEBHOOK, $MESSAGE);
+        $result = $this->sendJsonCurl($this->SLACK_WEBHOOK, $MESSAGE);
 
         return response()->json($result, 200);
     }
